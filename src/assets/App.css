@@ -1,0 +1,108 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  outline: none;
+  border: none;
+  transition: .3s;
+}
+html{
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  
+}
+
+:root{
+  --color-orange: #faba42;
+  --color-black: #000;
+  --color-black-light: #27282D;
+}
+
+header{
+  background-color: var(--color-black);
+  height: 70px;
+  
+}
+
+section{
+  padding: 0 5%;
+}
+
+.header-wrapper{
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+}
+
+.header-wrapper .logo{
+  color: #FFF;
+  border: 3px solid #faba42;
+  padding:5px 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.header-wrapper nav ul{
+  display: flex;
+  gap: 2rem;
+  
+}
+
+.header-wrapper nav ul a{
+  color: #FFF;
+  text-transform: capitalize;
+}
+
+.header-wrapper .cart-icon{
+  color: #FFF;
+ 
+  font-size: 2rem;
+  position: relative;
+}
+
+.header-wrapper .cart-icon span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-orange);
+  border-radius: 99%;
+  height: 25px;
+  width: 25px;
+  font-size: .8rem;
+  padding: 7px;
+  position: absolute;
+  top: -5px;
+  right: -15px;
+}
+
+.hero{
+  min-height: 70vh;
+  
+  background: url(../assets/slide.jpg) no-repeat center;
+  background-size: cover;
+}
+
+.hero .hero-content{
+  padding-top: 160px;
+  color: #FFF;
+  
+  
+}
+
+.hero-content span{
+  color: var(--color-orange);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.hero-content h1{
+  font-size: 4rem;  
+  margin-bottom: 15px;
+}
+
