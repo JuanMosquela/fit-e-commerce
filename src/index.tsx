@@ -8,6 +8,8 @@ import CartList from './pages/CartList';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import ProductDetailContainer from './pages/ProductDetailContainer';
+
 import Register from './pages/Register';
 import Store from './pages/Store';
 
@@ -25,8 +27,8 @@ root.render(
       <Route path='/store' element={<Store />} />
       <Route path='/about' element={<About />} />
       <Route path='/contact' element={<Contact />} />
-      <Route path='/cartlist' element={<CartList />} />
-      
+      <Route path='/cartlist' element={<CartList />} /> 
+      <Route path='/productDetail/:id' element={<ProductDetailContainer />} />   
     </Route>
 
   </Routes>

@@ -12,11 +12,12 @@ const Home = () => {
         <Link to='/store'>
           <Button variant="contained" sx={{
             backgroundColor:'var(--color-orange)',
+            fontWeight:'bold',
             '&:hover': {
               backgroundColor: 'var(--color-orange)'
             }
             }}>
-              Start Buying
+              Start shopping
           </Button>
         </Link>
 
@@ -25,6 +26,7 @@ const Home = () => {
       
 
     </section >
+    
     <ProductsList />
     </>
   )

@@ -104,11 +104,31 @@ header{
   margin-bottom: 15px;
 }
 
+
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));    
+  padding: 5rem 10%;
+  gap: 3rem 0;
+  margin: 0 auto;
+  
+}
+
 .container-products{
   display: grid;  
   grid-template-columns: repeat(auto-fit,minmax(240px, 1fr));
   gap: 2rem;  
   
+}
+
+.item-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  gap: 3rem;
+  height: 100vh;
 }
 
 
@@ -121,6 +141,7 @@ header{
   box-shadow: 7px 7px 20px rgba(0, 0, 0, .1);
   margin: 0 auto;
   overflow: hidden; 
+  cursor: pointer;
   
 }
 
@@ -130,3 +151,134 @@ header{
   object-fit: cover;
 }
 
+
+/* product details styles */
+
+.product-detail-container{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 0 10%;
+  
+}
+
+.product-detail{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  
+  align-items: center;
+
+}
+
+.pictures-wrapper{
+  flex: 1;
+}
+
+.product-info{
+  flex: 1;
+}
+
+.product-info h4{
+  color: var(--color-orange);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: .8rem;
+}
+
+.product-info h3{
+  
+   font-size: 2.8rem;
+   margin-bottom: 2rem;
+
+}
+
+.product-info p{
+  line-height: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  
+}
+
+.product-info .price{
+  font-size: 2rem;
+   font-weight: 600;
+   display: block;
+   margin-bottom: 1rem;
+}
+
+.main-picture img{
+  height: 500px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  
+  
+  
+}
+
+
+
+
+.picture-options{
+  display: flex;  
+  justify-content: center;
+  gap: 1rem;
+  
+
+}
+
+.picture-options img{
+  width: 100px;
+  height: 180px;
+  object-fit: contain;
+  cursor: pointer;
+  
+}
+
+.button-wrapper{
+  display: flex;
+  gap: 1rem;
+}
+
+.button-group{
+  
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem .5rem;
+  border-radius: 10px;
+}
+
+.button-group span{
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button-group span:nth-child(1), span:nth-child(3){
+  color: #faba42;
+  transform: scale(1.4);
+}
+
+.add-button{
+  display: flex;
+  gap: 1rem;
+  background-color: var(--color-orange);
+  color: #FFF;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.add-button:hover{
+  background-color: rgb(245, 175, 45);
+}
