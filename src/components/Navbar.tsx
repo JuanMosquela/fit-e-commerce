@@ -11,7 +11,7 @@ const Navbar = () => {
             <nav className='navbar'>
                 <ul>
                     {navbarLinks.map(link => (
-                        <Link to={`/${link}`}>{link}</Link>
+                        <Link key={link} to={`/${link}`}>{link}</Link>
                     )) }
                 </ul>
 

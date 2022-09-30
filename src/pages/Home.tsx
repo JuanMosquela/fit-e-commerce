@@ -1,8 +1,10 @@
 import { Button } from "@mui/material"
 import {Link} from 'react-router-dom'
+import ProductsList from "../components/ProductsList"
 
 const Home = () => {
   return (
+    <>
     <section className="hero">
       <div className="hero-content">
         <span>Let´s do it</span>
@@ -19,8 +21,12 @@ const Home = () => {
         </Link>
 
       </div>
+      
+      
 
     </section >
+    <ProductsList />
+    </>
   )
 }
 export default Home
