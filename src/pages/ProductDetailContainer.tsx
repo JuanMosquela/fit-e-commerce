@@ -5,21 +5,43 @@ import { db } from "../utils/firebase-config"
 import { Product } from '../utils/interfaces'
 import { CircularProgress, Skeleton } from "@mui/material"
 import ProductDetail from "../components/ProductDetail"
-import useFetch from "../hooks/useFetch"
 
 
 
 const ProductDetailContainer = () => {
 
-    const { id } = useParams() 
+    const { id } = useParams()
 
-    const [product, setProduct] = useState<Product>() 
+    const [product, setProduct] = useState<Product>()
+    const [loading, setLoading] = useState(true)
 
-    const {dataProducts } = useFetch()  
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const products = collection(db, 'products')      
 
-    useEffect(() => {             
+            getDocs(products).then(res => {
+                const list : any = res.docs.map(product  => ({
+                    ...product.data(),
+                    id: product.id
+                }))        
             
-        setProduct(dataProducts.find((item : Product ) => item.id === id))
+            setProduct(list.find((item : Product ) => item.id === id))})
+            setLoading(false)
+                
+            } catch (error) {
+                console.log(error)
+                setLoading(false)
+                
+            } finally{
+                setLoading(false)
+            }
+
+        }
+
+        fetchProduct()
+        
+      
     }, [id])    
 
 

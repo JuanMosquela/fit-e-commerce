@@ -200,7 +200,13 @@ header{
   line-height: 1.8rem;
   margin-bottom: 1.5rem;
   text-align: justify;
+  display: inline;
   
+}
+
+.product-info .readmore{
+  color: violet;
+  cursor: pointer;
 }
 
 .product-info .price{

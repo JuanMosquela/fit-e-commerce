@@ -10,6 +10,10 @@ const ProductDetail = ({ product } : Props ) => {
 
     const [pictureIndex, setPictureIndex] = useState<number>(0)
 
+    const [view, setView] = useState(false)
+
+    console.log(view)
+
 
 
   return (
@@ -28,7 +32,9 @@ const ProductDetail = ({ product } : Props ) => {
         <div className="product-info">
           <h4>{product.category}</h4>
           <h3>{product.title}</h3>
-          <p>{product.description}</p>
+          <p>{view ? product.description : product.description?.substring(0,300)}..</p>
+          <button className="readmore" onClick={() => setView(!view)}>{view ? 'Hide text' : 'Read more'}</button>
+           
           <span className="price">$ {product.price}</span>
           <ButtonCounter />
         </div>
