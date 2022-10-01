@@ -1,6 +1,9 @@
 import { Product } from "../utils/interfaces"
 import { useState } from 'react'
 import ButtonCounter from "./ButtonCounter"
+import { BsFillCartPlusFill } from "react-icons/bs"
+import { useDispatch } from "react-redux"
+import { addToCart } from "../redux/shoppingCartRedux"
 
 interface Props {
     product: Product
@@ -12,7 +15,13 @@ const ProductDetail = ({ product } : Props ) => {
 
     const [view, setView] = useState(false)
 
-    console.log(view)
+    const dispatch = useDispatch()
+
+    const handleClick = (product : Product) => {
+        dispatch(addToCart(product))
+
+
+    }
 
 
 
@@ -36,7 +45,15 @@ const ProductDetail = ({ product } : Props ) => {
           <button className="readmore" onClick={() => setView(!view)}>{view ? 'Hide text' : 'Read more'}</button>
            
           <span className="price">$ {product.price}</span>
-          <ButtonCounter />
+          <div className="button-wrapper">
+            <ButtonCounter />
+            <button 
+              className="add-button"
+              onClick={() => handleClick(product)}>
+                <BsFillCartPlusFill />
+                Add to Cart
+            </button>
+          </div>
         </div>
 
     </div>

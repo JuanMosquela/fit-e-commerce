@@ -11,21 +11,16 @@ const ButtonCounter = () => {
     setCounter(prev => prev + value) 
   }
 
-  return (
-    <>    
-      <div className="button-wrapper">
-        <button className="button-group">
-          <span onClick={() => handleClick(-1)}>-</span>
-          <span>{counter}</span>
-          <span onClick={() => handleClick(1)}>+</span>
-        </button>
+  return (      
       
-        <button className="add-button">
-          <BsFillCartPlusFill />
-          Add to Cart
-        </button>
-      </div>
-    </>
+      <button className="button-group">
+        <span onClick={() => handleClick(-1)}>-</span>
+        <span>{counter}</span>
+        <span onClick={() => handleClick(1)}>+</span>
+      </button>     
+        
+      
+    
   )
 }
 export default ButtonCounter

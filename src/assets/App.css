@@ -16,6 +16,7 @@ html{
 
 :root{
   --color-orange: #faba42;
+  --color-pink: #bb84ee;
   --color-black: #000;
   --color-black-light: #27282D;
 }
@@ -205,8 +206,10 @@ header{
 }
 
 .product-info .readmore{
-  color: violet;
+  color: var(--color-pink);
+  background-color: #FFF;
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .product-info .price{
