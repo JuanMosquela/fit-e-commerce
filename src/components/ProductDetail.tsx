@@ -2,7 +2,7 @@ import { Product } from "../utils/interfaces"
 import { useState } from 'react'
 import ButtonCounter from "./ButtonCounter"
 import { BsFillCartPlusFill } from "react-icons/bs"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from "../redux/shoppingCartRedux"
 
 interface Props {
@@ -11,6 +11,8 @@ interface Props {
 
 const ProductDetail = ({ product } : Props ) => {
 
+    const cart = useSelector(state => state)
+
     const [pictureIndex, setPictureIndex] = useState<number>(0)
 
     const [view, setView] = useState(false)
@@ -18,10 +20,10 @@ const ProductDetail = ({ product } : Props ) => {
     const dispatch = useDispatch()
 
     const handleClick = (product : Product) => {
-        dispatch(addToCart(product))
-
-
+      dispatch(addToCart(product))
     }
+
+    console.log(cart)
 
 
 

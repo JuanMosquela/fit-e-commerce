@@ -1,17 +1,17 @@
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useCartSelector } from '../redux/shoppingCartRedux'
 
 const CartWidget = () => {
 
-  const {cart: { quantity }}: any = useSelector((state) => state)
-
-  console.log(quantity)
+  const state = useSelector(useCartSelector) 
+  
 
   return (
     <Link to='/cartlist' className='cart-icon'>
         <AiOutlineShoppingCart />
-        <span>{quantity}</span>
+        <span>{state.quantity}</span>
     </Link>
   )
 }
