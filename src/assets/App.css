@@ -37,7 +37,7 @@ header{
 }
 
 .container, section{
-  padding: 0 5%;
+  padding: 3rem 5%;
 }
 
 .header-wrapper{
@@ -299,4 +299,116 @@ header{
 
 .add-button:hover{
   background-color: rgb(245, 175, 45);
+}
+
+/* ----------------- cart section --------------------- */
+
+.cart-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+  
+}
+
+.cart-container .title-wrapper{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  
+}
+
+.title-wrapper h3{
+  color: #333;
+  padding: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  
+}
+
+.cart-container .cart-item{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  align-items: center;
+  border-top: rgb(131, 131, 131) 1px solid;
+  padding: 15px 0;
+  
+  
+}
+
+.cart-item .item-info{
+  display: flex;
+  text-align: left;  
+  gap: 1.5rem;
+  
+}
+
+.cart-container .cart-item img{
+  height: 150px;
+  width: 90px;
+  object-fit: contain;
+  
+}
+
+.cart-container .cart-item h4{
+  padding-top: 1rem ;
+  font-weight: 500;
+}
+
+.cart-container .cart-item h5{  
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+
+
+.cart-container .cart-item button{
+  padding:5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-summary{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  
+}
+
+.cart-summary .clear-cart{
+  color: #333;
+  border: 1px #333 solid;
+  background-color: #FFF;
+  
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.checkout-info{
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-bottom: 15px;
+  
+}
+
+.cart-checkout p{
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.checkout-button{
+  display: flex;
+  gap: 1rem;
+  background-color: var(--color-orange);
+  color: #FFF;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  
 }
