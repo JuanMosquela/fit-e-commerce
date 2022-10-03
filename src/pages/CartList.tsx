@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 
 import EmpyCart from "../components/EmpyCart";
-import { removeItem, decrese,  useCartSelector, increse } from "../redux/shoppingCartRedux"
 import { Product } from "../utils/interfaces";
+import {removeItem,
+        decrese,
+        useCartSelector,
+        increse,
+        reloadCart, 
+        clearCart } from "../redux/shoppingCartRedux"
 
 
 
@@ -13,6 +19,11 @@ const CartList = () => {
   const { cart, totalPrice } = useSelector(useCartSelector) 
   
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(reloadCart())    
+
+  }, [cart])
 
   const handleRemove = (product : Product) => {
     dispatch(removeItem(product))
@@ -69,8 +80,8 @@ const CartList = () => {
             </div>
           ))} 
           <div className="cart-summary">
-            <button className="clear-cart">Clear Cart</button>
-            <div className="cart-checkout">
+            <button className="clear-cart" onClick={() => dispatch(clearCart())}>Clear Cart</button>
+            <div className="cart-checkout"> 
               <div className="checkout-info">
                 <h3>Subtotal</h3>
                 <span>{totalPrice}</span>

@@ -11,8 +11,12 @@ import ProductDetailContainer from './pages/ProductDetailContainer';
 import Register from './pages/Register';
 
 
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import { store } from './redux/store'
+import { reloadCart } from './redux/shoppingCartRedux';
+
+
+
 
 
 
