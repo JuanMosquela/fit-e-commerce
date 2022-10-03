@@ -7,7 +7,12 @@ import { addToCart } from "../redux/shoppingCartRedux"
 
 interface Props {
     product: Product
+    
 }
+
+
+
+
 
 const ProductDetail = ({ product } : Props ) => {
 
@@ -15,12 +20,30 @@ const ProductDetail = ({ product } : Props ) => {
 
     const [pictureIndex, setPictureIndex] = useState<number>(0)
 
+    const [counter, setCounter] = useState<number>(0)
+
     const [view, setView] = useState(false)
 
     const dispatch = useDispatch()
 
-    const handleClick = (product : Product) => {
-      dispatch(addToCart(product))
+     const obj = {
+      product: product,
+      counter: counter
+     }
+
+    
+
+    const handleClick = ( obj : any ) => {
+      dispatch(addToCart( obj ))
+    }
+
+    
+
+    
+
+    const handleCounter = (value: number) : void  => {
+      if(counter === 0 && value === -1) return
+      setCounter(prev => prev + value) 
     }
 
     console.log(cart)
@@ -48,10 +71,14 @@ const ProductDetail = ({ product } : Props ) => {
            
           <span className="price">$ {product.price}</span>
           <div className="button-wrapper">
-            <ButtonCounter />
+          <button className="button-group">
+            <span onClick={() => handleCounter(-1)}>-</span>
+            <span>{counter}</span>
+            <span onClick={() => handleCounter(1)}>+</span>
+          </button> 
             <button 
               className="add-button"
-              onClick={() => handleClick(product)}>
+              onClick={() => handleClick(obj)}>
                 <BsFillCartPlusFill />
                 Add to Cart
             </button>

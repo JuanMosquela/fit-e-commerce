@@ -1,6 +1,6 @@
 
 import {useState} from 'react'
-import {BsFillCartPlusFill} from 'react-icons/bs'
+
 
 const ButtonCounter = () => {
 
@@ -13,7 +13,7 @@ const ButtonCounter = () => {
 
   return (      
       
-      <button className="button-group details">
+      <button className="button-group">
         <span onClick={() => handleClick(-1)}>-</span>
         <span>{counter}</span>
         <span onClick={() => handleClick(1)}>+</span>

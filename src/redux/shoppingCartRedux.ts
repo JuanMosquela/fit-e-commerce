@@ -19,25 +19,30 @@ export const shoppingCartSlice = createSlice({
     name:'cart',
     initialState,
     reducers: {
-        addToCart: (state: CartState, action: PayloadAction<Product>) => {            
-            state.quantity += 1; 
-            localStorage.setItem('cartQuantity', JSON.stringify(state.quantity))          
+        addToCart: (state: CartState, action: PayloadAction<any>) => {
+            
+            let counter = action.payload.counter
+            
+            state.quantity += counter ? counter : 1
+            const existingIndex = state.cart.findIndex(
+                (item) => item.id === action.payload.product.id
+            );            
+        
+            if (existingIndex >= 0) {
+                state.cart[existingIndex] = {
+                  ...state.cart[existingIndex],
+                  amount: counter ? state.cart[existingIndex].amount + counter : state.cart[existingIndex].amount + 1
+                };
+                
+            } else {
+                let tempProductItem = { ...action.payload.product, amount: counter ? counter : 1 };
+                state.cart.push(tempProductItem);
+                
+            }
+            localStorage.setItem("cart", JSON.stringify(state.cart));
+            
 
-            const isInCart = state.cart.find(product => {
-                return product.id === action.payload.id
-            })           
-
-            if(isInCart) {               
-                const findItem = state.cart.map(item => {
-                    return item.id === isInCart.id ? {...isInCart, amount: item.amount += 1 } : item
-                }) 
-                state.cart =  findItem         
-            }else{
-                state.cart.push({ ...action.payload, amount: 1 })
-            }            
-            state.totalPrice += action.payload.price 
-
-            localStorage.setItem('cart', JSON.stringify(state.cart)) 
+           
                     
 
         },
