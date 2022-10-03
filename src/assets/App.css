@@ -401,7 +401,8 @@ header{
 
 .checkout-button{
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 2rem;
   background-color: var(--color-orange);
   color: #FFF;
   padding: 1rem 1.5rem;
@@ -410,5 +411,7 @@ header{
   font-weight: 600;
   text-transform: capitalize;
   cursor: pointer;
+  width: 100%;
+ 
   
 }

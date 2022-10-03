@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { Action } from "@remix-run/router";
 import { TypedUseSelectorHook } from "react-redux";
 import { Product } from "../utils/interfaces";
 import { RootState } from "./store";
@@ -11,7 +12,7 @@ interface CartState {
 
 
  const initialState: CartState = {
-    cart:[],
+    cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || "") : [],
     quantity: 0,
     totalPrice: 0
 
@@ -37,15 +38,30 @@ export const shoppingCartSlice = createSlice({
             }else{
                 state.cart.push({ ...action.payload, amount: 1 })
             }            
-            state.totalPrice += action.payload.price           
+            state.totalPrice += action.payload.price 
 
+            localStorage.setItem('cart', JSON.stringify(state.cart)) 
+                    
+
+        },
+        removeItem: (state: CartState, action: PayloadAction<Product>) => { 
+            const newArray = state.cart.filter(product => {
+                return product.id !== action.payload.id
+            })
+            state.cart = newArray 
+            state.totalPrice -= action.payload.price 
+            console.log(state.cart) 
+
+            localStorage.setItem('cart', JSON.stringify(state.cart)) 
+                      
         }
-
+        
     }    
     
 })
 
-export const { addToCart } = shoppingCartSlice.actions;
+export const { addToCart, removeItem } = shoppingCartSlice.actions;
+
 export const useCartSelector = (state: RootState) => state.cart
 
 export default shoppingCartSlice.reducer;

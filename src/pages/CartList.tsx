@@ -1,13 +1,27 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import EmpyCart from "../components/EmpyCart";
-import { useCartSelector } from "../redux/shoppingCartRedux"
-import { BsCartCheck } from 'react-icons/bs'
+import { removeItem, useCartSelector } from "../redux/shoppingCartRedux"
+import { Product } from "../utils/interfaces";
+
 
 
 const CartList = () => {
 
-  const { cart, totalPrice } = useSelector(useCartSelector)  
+  
+
+  const { cart, totalPrice } = useSelector(useCartSelector) 
+  
+  const dispatch = useDispatch()
+
+  const handleRemove = (product : Product) => {
+    dispatch(removeItem(product))
+    
+
+  }
+
+  console.log(totalPrice)
+  
 
 
   return (
@@ -31,7 +45,7 @@ const CartList = () => {
                 <div>
                   <h4>{product.title}</h4>
                   <h5>{product.category}</h5>
-                  <button>Remove</button>
+                  <button onClick={() => handleRemove(product)}>Remove</button>
                 </div>
               </div>
               <span>$ {product.price}</span>
@@ -54,7 +68,7 @@ const CartList = () => {
               </div>
               <p>Taxes and shipping calculated at checkout</p>
               <button className="checkout-button">
-                <BsCartCheck />
+                
                 Check out
               </button>
             </div>
