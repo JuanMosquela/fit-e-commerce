@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 
 import EmpyCart from "../components/EmpyCart";
-import { removeItem, useCartSelector } from "../redux/shoppingCartRedux"
+import { removeItem, decrese,  useCartSelector, increse } from "../redux/shoppingCartRedux"
 import { Product } from "../utils/interfaces";
 
 
@@ -18,6 +18,15 @@ const CartList = () => {
     dispatch(removeItem(product))
     
 
+  }
+
+   const handleDecrese = (product : Product) => {
+    dispatch(decrese(product))
+    
+
+  }
+  const handleIncrece = (product: Product) => {
+    dispatch(increse(product))
   }
 
   console.log(totalPrice)
@@ -50,9 +59,9 @@ const CartList = () => {
               </div>
               <span>$ {product.price}</span>
               <div className="amount-button">
-                <button>-</button>
+                <button onClick={() => handleDecrese(product)}>-</button>
                 <span>{product.amount}</span>
-                <button>+</button>
+                <button onClick={() => handleIncrece(product)}>+</button>
               </div>
               
               <span>$ {product.price*product.amount}</span>         

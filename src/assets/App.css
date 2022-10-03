@@ -37,7 +37,7 @@ header{
 }
 
 .container, section{
-  padding: 3rem 5%;
+  padding: 3rem 10%;
 }
 
 .header-wrapper{
@@ -402,7 +402,7 @@ header{
 .checkout-button{
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  
   background-color: var(--color-orange);
   color: #FFF;
   padding: 1rem 1.5rem;

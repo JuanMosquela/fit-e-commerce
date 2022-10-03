@@ -51,7 +51,7 @@ const ProductsList = () => {
 
 
   return (
-    <div className='container-products'>
+    <section className='container-products'>
 
 
       {
@@ -71,7 +71,7 @@ const ProductsList = () => {
 
         
 
-    </div>
+    </section>
   )
 }
 export default ProductsList
