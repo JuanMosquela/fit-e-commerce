@@ -13,7 +13,7 @@ const ButtonCounter = () => {
 
   return (      
       
-      <button className="button-group">
+      <button className="button-group details">
         <span onClick={() => handleClick(-1)}>-</span>
         <span>{counter}</span>
         <span onClick={() => handleClick(1)}>+</span>

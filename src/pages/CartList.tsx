@@ -69,10 +69,10 @@ const CartList = () => {
                 </div>
               </div>
               <span>$ {product.price}</span>
-              <div className="amount-button">
-                <button onClick={() => handleDecrese(product)}>-</button>
+              <div className="button-group">
+                <span onClick={() => handleDecrese(product)}>-</span>
                 <span>{product.amount}</span>
-                <button onClick={() => handleIncrece(product)}>+</button>
+                <span onClick={() => handleIncrece(product)}>+</span>
               </div>
               
               <span>$ {product.price*product.amount}</span>         
@@ -83,8 +83,8 @@ const CartList = () => {
             <button className="clear-cart" onClick={() => dispatch(clearCart())}>Clear Cart</button>
             <div className="cart-checkout"> 
               <div className="checkout-info">
-                <h3>Subtotal</h3>
-                <span>{totalPrice}</span>
+                <h3>Subtotal:</h3>
+                <span>$ {totalPrice}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
               <button className="checkout-button">
