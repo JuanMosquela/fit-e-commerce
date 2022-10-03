@@ -9,7 +9,7 @@ const Home = () => {
       <div className="hero-content">
         <span>Let´s do it</span>
         <h1>Start working out today</h1>
-        <Link to='/store'>
+        <Link to='/'>
           <Button variant="contained" sx={{
             backgroundColor:'var(--color-orange)',
             fontWeight:'bold',

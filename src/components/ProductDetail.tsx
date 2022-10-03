@@ -66,7 +66,7 @@ const ProductDetail = ({ product } : Props ) => {
         <div className="product-info">
           <h4>{product.category}</h4>
           <h3>{product.title}</h3>
-          <p>{view ? product.description : product.description?.substring(0,300)}..</p>
+          <p>{view ? product.description : product.description?.substring(0,500)}..</p>
           <button className="readmore" onClick={() => setView(!view)}>{view ? 'Hide text' : 'Read more'}</button>
            
           <span className="price">$ {product.price}</span>
