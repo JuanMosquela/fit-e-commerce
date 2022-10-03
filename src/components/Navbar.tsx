@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
-const navbarLinks = ['store', 'about', 'contact']
+const navbarLinks = ['about', 'contact']
 
 const Navbar = () => {
   return (
