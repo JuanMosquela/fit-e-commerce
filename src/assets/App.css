@@ -11,15 +11,14 @@
 html{
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  
 }
 
 body{
   overflow-x: hidden;
 }
 
-section{
-  overflow-x: hidden;
-}
+
 
 
 
@@ -38,6 +37,7 @@ header{
 
 .container, section{
   padding: 3rem 10%;
+  overflow-x: hidden;
 }
 
 .header-wrapper{
@@ -211,8 +211,7 @@ header{
 }
 
 .product-info p{
-  line-height: 1.8rem;
-  margin-bottom: 1.5rem;
+  line-height: 1.8rem;  
   text-align: justify;
   display: inline;
   
@@ -229,7 +228,7 @@ header{
   font-size: 2rem;
    font-weight: 600;
    display: block;
-   margin-bottom: 1rem;
+   margin: 1.5rem 0;
 }
 
 .main-picture img{
@@ -262,8 +261,13 @@ header{
   
 }
 
+.picture-options img:hover{
+  transform: scale(1.1);
+}
+
 .button-wrapper{
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -275,7 +279,7 @@ header{
   padding: 1rem .5rem;
   border-radius: 10px;
   background-color: #eee;
-  width: 200px;
+  
   
   
 }
@@ -295,6 +299,7 @@ header{
 
 .add-button{
   display: flex;
+  justify-content: center;
   gap: 1rem;
   background-color: var(--color-orange);
   color: #FFF;
@@ -304,6 +309,7 @@ header{
   font-weight: 600;
   text-transform: capitalize;
   cursor: pointer;
+  
 }
 
 .add-button:hover{
@@ -329,8 +335,7 @@ header{
 
 .title-wrapper h3{
   color: #333;
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 1rem;  
   text-transform: uppercase;
   
 }
@@ -341,6 +346,7 @@ header{
   text-align: center;
   align-items: center;
   justify-content: center;
+  
   
   border-bottom: rgb(131, 131, 131) 1px solid;
   padding: 15px 0;
@@ -383,6 +389,8 @@ header{
 .cart-summary{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
   align-items: center;
   margin-top: 2rem;
   
@@ -502,4 +510,99 @@ header{
 
 .empty-cart-container .button-wrapper p{
   font-size: 1.2rem;
+}
+
+
+
+
+
+
+/* ----------------- media queries -------------------- */
+
+@media (max-width:868px){
+  
+  .container, section{
+    padding: 3rem 5%;
+  }
+}
+
+@media (max-width:568px){
+  .product-info h3{
+    font-size: 1.6rem;
+  }
+
+  .product-info p{
+    font-size: .8rem;
+    
+  }
+  .product-info .price{
+    font-size: 1.8rem;
+  }
+
+  .main-picture img{
+    height: 200px;
+  }
+
+
+  .picture-options img{
+    height: 80px;
+    width: 60px;
+  }
+  
+
+  .button-wrapper .button-group, .add-button{
+    width: 100%;
+    
+  }
+
+
+
+  /* ----cartlist ---- */
+  
+
+  .container, section{
+    padding: 3rem 2%;
+  }
+
+  .header-wrapper{
+    padding: 2%;
+  }
+
+  .header-wrapper nav{
+    display: none;
+  }
+  .header-wrapper .cart-icon{
+    font-size: 1.8rem;
+    padding-right: 10px;
+  }
+  .header-wrapper .cart-icon span{
+    height: 20px;
+    width: 20px;
+    right: 5px;
+  }
+  .cart-container .cart-item img{
+    height: 100px;
+    width: 40px;
+  }
+  .title-wrapper h3{
+     font-size: .8rem;
+  }
+  .cart-container .cart-item h4{
+    font-size: 10px;
+
+  }
+  .cart-container .cart-item h5{
+    font-size: 10px;
+  }
+  .cart-container .cart-item span{
+    font-size: 10px;
+  }
+  .cart-container .cart-item .button-group{
+    width: 70px;
+    padding: 5px;
+  }
+  .cart-item .item-info button{
+    font-size: 10px;
+    padding: 5px;
+  }
 }

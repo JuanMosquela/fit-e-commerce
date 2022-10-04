@@ -46,7 +46,7 @@ const ProductDetail = ({ product } : Props ) => {
       setCounter(prev => prev + value) 
     }
 
-    console.log(cart)
+    
 
 
 
@@ -58,7 +58,10 @@ const ProductDetail = ({ product } : Props ) => {
             </figure>
             <div className="picture-options">
                 {product.pictureURL.map((picture, index) => (
-                    <img key={index} onClick={() => setPictureIndex(index)} src={picture} alt='' />
+                    <img 
+                      key={index}                      
+                      onMouseOver={() => setPictureIndex(index)}                      
+                      src={picture} alt='product' />
                 ))}
             </div>
 
