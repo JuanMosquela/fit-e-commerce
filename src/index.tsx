@@ -8,12 +8,13 @@ import Contact from './pages/Contact';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ProductDetailContainer from './pages/ProductDetailContainer';
-import Register from './pages/Register';
 
-
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 import { store } from './redux/store'
-import { reloadCart } from './redux/shoppingCartRedux';
+import Products from './pages/Products';
+
+import UserProvider from './context/UserProvider';
+import SignUp from './pages/SignUp';
 
 
 
@@ -26,18 +27,22 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Provider store={store}>
+      <UserProvider>
       <Routes>
         <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/' element={<App />}>
-          <Route index element={<Home />} />
-          
+          <Route index element={<Home />} />          
           <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/cartlist' element={<CartList />} /> 
+          <Route path='/contact' element={<Contact />} />          
+          <Route path='/products' element={<Products />} />
+          <Route path='/cartlist' element={<CartList />} />
+         
           <Route path='/productDetail/:id' element={<ProductDetailContainer />} />   
         </Route>
       </Routes>
+
+      </UserProvider>
     </Provider>    
   </BrowserRouter>
 );

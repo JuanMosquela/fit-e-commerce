@@ -3,14 +3,17 @@ import { useState, useEffect } from 'react'
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../utils/firebase-config"
 import { Product } from '../utils/interfaces'
-import { Box, CircularProgress, Skeleton } from "@mui/material"
+import { CircularProgress } from "@mui/material"
 import ProductDetail from "../components/ProductDetail"
+import SlickCarrusel from "../components/SlickCarrusel"
 
 
 
 const ProductDetailContainer = () => {
 
     const { id } = useParams()
+
+    const [allProducts, setAllProducts] = useState([])
 
     const [product, setProduct] = useState<Product>()
     const [loading, setLoading] = useState(true)
@@ -24,7 +27,8 @@ const ProductDetailContainer = () => {
                 const list : any = res.docs.map(product  => ({
                     ...product.data(),
                     id: product.id
-                }))        
+                }))  
+                setAllProducts(list)      
             
             setProduct(list.find((item : Product ) => item.id === id))})
             setLoading(false)
@@ -46,14 +50,19 @@ const ProductDetailContainer = () => {
 
 
   return (
+    <>
     <div className='container product-detail-container'>
         {
             !product 
             ? <CircularProgress sx={{ color:'var(--color-orange)' }} size='5rem'  />
             : <ProductDetail product={product} />
         }
+
+        
         
     </div>
+    <SlickCarrusel products={allProducts} />
+    </>
   )
 }
 export default ProductDetailContainer
