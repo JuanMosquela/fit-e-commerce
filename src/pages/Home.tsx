@@ -1,6 +1,7 @@
 import { Button } from "@mui/material"
 import {Link} from 'react-router-dom'
 import ProductsList from "../components/ProductsList"
+import Services from "../components/Services"
 
 
 const Home = () => {
@@ -27,6 +28,8 @@ const Home = () => {
       
 
     </section >
+
+    <Services />
     
     <ProductsList />
     </>

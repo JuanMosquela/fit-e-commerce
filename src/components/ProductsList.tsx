@@ -5,6 +5,7 @@ import { Product } from '../utils/interfaces'
 import CardProduct from './CardProduct'
 import { Link } from 'react-router-dom'
 import { CircularProgress, Skeleton } from '@mui/material'
+import Title from './Title'
 
 
 
@@ -53,19 +54,21 @@ const ProductsList = () => {
   return (
     <section className='container-products'>
 
+      <Title title='Our products' subtitle='Selling' />
+
 
       {
         loading 
         ?
         <CircularProgress />
         :
-        <>
+        <div className='grid-container'>
           {dataProducts.map(product => (
             <Link key={product.id} to={`/productDetail/${product.id}`}>
               <CardProduct key={product.id} product={product} />
             </Link>
         ))}
-        </>
+        </div>
       }
 
 

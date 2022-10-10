@@ -12,6 +12,7 @@ const CardProduct = ({ product }: Props ) => {
             src={product.pictureURL[0]} 
             alt={product.title}
          />
+         <h4>{product.title}</h4>
     </div>
   )
 }
