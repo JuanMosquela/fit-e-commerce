@@ -108,8 +108,9 @@ export const shoppingCartSlice = createSlice({
             state.quantity = quantity;
             state.totalPrice = total
         }, 
-        clearCart: (state ) => {
+        clearCart: (state : CartState) => {
             state.cart = [];
+            state.quantity = 0;
             localStorage.setItem('cart', JSON.stringify([]))
         }
     }}

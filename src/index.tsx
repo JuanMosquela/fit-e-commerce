@@ -1,23 +1,15 @@
-import React from 'react';
+
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
-import About from './pages/About';
 import CartList from './pages/CartList';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
-import Login from './pages/Login';
 import ProductDetailContainer from './pages/ProductDetailContainer';
-
 import { Provider } from 'react-redux';
-import { store } from './redux/store'
-import Products from './pages/Products';
-
+import { store } from './redux/store';
 import UserProvider from './context/UserProvider';
-import SignUp from './pages/SignUp';
-
-
-
+import SuccessPage from './pages/SuccessPage';
 
 
 
@@ -29,16 +21,13 @@ root.render(
     <Provider store={store}>
       <UserProvider>
       <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<SignUp />} />
+        
         <Route path='/' element={<App />}>
           <Route index element={<Home />} />          
-          <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />          
-          <Route path='/products' element={<Products />} />
+          <Route path='/contact' element={<Contact />} />         
           <Route path='/cartlist' element={<CartList />} />
-         
           <Route path='/productDetail/:id' element={<ProductDetailContainer />} />   
+          <Route path='/success' element={<SuccessPage />} />         
         </Route>
       </Routes>
 

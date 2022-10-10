@@ -9,6 +9,7 @@ import {removeItem,
         increse,
         reloadCart, 
         clearCart } from "../redux/shoppingCartRedux"
+import { Link } from "react-router-dom";
 
 
 
@@ -40,7 +41,7 @@ const CartList = () => {
     dispatch(increse(product))
   }
 
-  console.log(totalPrice)
+ 
   
 
 
@@ -87,10 +88,16 @@ const CartList = () => {
                 <span>$ {totalPrice}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <button className="checkout-button">
+             
+              <Link to='/success'>
+                <button className="checkout-button">
+                  Check out           
                 
-                Check out
-              </button>
+                </button>
+              </Link>
+                
+                
+              
             </div>
           </div>  
         </> 

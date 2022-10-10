@@ -65,7 +65,7 @@ const ProductsList = () => {
         <div className='grid-container'>
           {dataProducts.map(product => (
             <Link key={product.id} to={`/productDetail/${product.id}`}>
-              <CardProduct key={product.id} product={product} />
+              <CardProduct  product={product} />
             </Link>
         ))}
         </div>

@@ -1,3 +1,4 @@
+
 import './App.css'
 import Navbar from './components/Navbar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -23,7 +24,7 @@ function App() {
     <div className="App">
       <Navbar />
       <>
-        { user ? <Outlet /> : navigate('/login') }   
+        <Outlet />   
       </>
       <Footer />
       

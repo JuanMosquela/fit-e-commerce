@@ -28,7 +28,7 @@ const Services = () => {
             <Title title='Our awesome services' subtitle='Offering' />
             <div className="services-wrapper">
                 {services.map(service => (
-                    <div className="service-item">
+                    <div key={service.title} className="service-item">
                         <i>{service.icon}</i>
                         <h3>{service.title}</h3>
                         <p>{service.description}</p>
