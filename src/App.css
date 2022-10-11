@@ -160,6 +160,44 @@ header{
 
 /* --------------- service section --------------------*/
 
+.filter-options-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-input{
+  background-color: #eee;
+  border: 1px solid rgb(32, 32, 32);
+  padding: 7px;
+  border: 1px solid #ccc;
+}
+
+.categories-container .select{
+  position: relative;
+}
+
+.categories-container .select ul{
+  
+  top: 25px;
+  left: 0;
+}
+
+.categories-container .select ul li{
+  padding: 5px;
+  cursor: pointer;
+    
+}
+
+.categories-container .select ul li:hover{
+  background-color: #faba42;
+  color: #eee;
+}
+
+
+
+
+
 
 .services-container{
   color: var(--color-black-light);

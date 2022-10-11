@@ -4,8 +4,12 @@ import { db } from '../utils/firebase-config'
 import { Product } from '../utils/interfaces'
 import CardProduct from './CardProduct'
 import { Link } from 'react-router-dom'
-import { CircularProgress, Skeleton } from '@mui/material'
+import { CircularProgress } from '@mui/material'
 import Title from './Title'
+
+
+
+
 
 
 
@@ -14,12 +18,17 @@ const ProductsList = () => {
 
     const [dataProducts, setDataProducts] = useState<Product[]>([])
 
-    const [loading, setLoading] = useState(true)
+    const [filter, setFilter] = useState<string>('')
+
+    const [loading, setLoading] = useState<boolean>(true)   
+    
+    const [category, setCategory] = useState<Product[]>([])
+
+    const [hover, setHover] = useState<boolean>(false)
 
     
 
     useEffect (() => {
-
        const fetchProducts = () => {
         try {
           const products = collection(db, 'products')      
@@ -31,8 +40,7 @@ const ProductsList = () => {
             }))
           
           setDataProducts(list)
-          setLoading(false)
-        
+          setLoading(false)        
       })
           
         } catch (error) {
@@ -42,13 +50,22 @@ const ProductsList = () => {
         } finally{
           setLoading(false)
         }
-
        }
-
-       fetchProducts()
-      
+      fetchProducts()     
       
     }, [])
+
+    const handleCategory = (category : string) => {
+
+      const filterArray = dataProducts.filter(product => {
+        return product.category === category
+      })
+      setCategory(filterArray)
+
+    }
+
+     console.log(category)
+    
 
 
   return (
@@ -56,6 +73,30 @@ const ProductsList = () => {
 
       <Title title='Our products' subtitle='Selling' />
 
+      <div className='filter-options-container'>
+        <input
+          className="filter-input" 
+          type="text"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)} 
+        />
+        <div 
+          className="select"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}>
+          categories
+          {
+            hover && 
+            <ul>
+              <li onClick={() => handleCategory('all products')}>All products</li>
+              <li onClick={() => handleCategory('standard')}>Standard</li>
+              <li onClick={() => handleCategory('vegetariana')}>Vegetariana</li>
+              <li onClick={() => handleCategory('isolada')}>Isolada</li>
+          </ul>
+          }
+        </div>
+        
+    </div>
 
       {
         loading 
@@ -63,16 +104,15 @@ const ProductsList = () => {
         <CircularProgress />
         :
         <div className='grid-container'>
-          {dataProducts.map(product => (
+          {dataProducts.filter(product => 
+            product.title.toLowerCase().includes(filter) ||
+            product.category.includes(category)).map(product => (
             <Link key={product.id} to={`/productDetail/${product.id}`}>
               <CardProduct  product={product} />
             </Link>
         ))}
         </div>
-      }
-
-
-        
+      }        
 
     </section>
   )
