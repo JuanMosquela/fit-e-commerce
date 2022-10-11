@@ -8,23 +8,13 @@ import { CircularProgress } from '@mui/material'
 import Title from './Title'
 
 
-
-
-
-
-
-
 const ProductsList = () => {
 
     const [dataProducts, setDataProducts] = useState<Product[]>([])
 
-    const [filter, setFilter] = useState<string>('')
+    const [inputValue, setInputValue] = useState<string>('')
 
-    const [loading, setLoading] = useState<boolean>(true)   
-    
-    const [category, setCategory] = useState<Product[]>([])
-
-    const [hover, setHover] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)    
 
     
 
@@ -55,16 +45,7 @@ const ProductsList = () => {
       
     }, [])
 
-    const handleCategory = (category : string) => {
-
-      const filterArray = dataProducts.filter(product => {
-        return product.category === category
-      })
-      setCategory(filterArray)
-
-    }
-
-     console.log(category)
+    
     
 
 
@@ -77,24 +58,10 @@ const ProductsList = () => {
         <input
           className="filter-input" 
           type="text"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)} 
-        />
-        <div 
-          className="select"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}>
-          categories
-          {
-            hover && 
-            <ul>
-              <li onClick={() => handleCategory('all products')}>All products</li>
-              <li onClick={() => handleCategory('standard')}>Standard</li>
-              <li onClick={() => handleCategory('vegetariana')}>Vegetariana</li>
-              <li onClick={() => handleCategory('isolada')}>Isolada</li>
-          </ul>
-          }
-        </div>
+          value={inputValue}
+          placeholder='Search products by name'
+          onChange={(e) => setInputValue(e.target.value)} 
+        />        
         
     </div>
 
@@ -105,8 +72,7 @@ const ProductsList = () => {
         :
         <div className='grid-container'>
           {dataProducts.filter(product => 
-            product.title.toLowerCase().includes(filter) ||
-            product.category.includes(category)).map(product => (
+            product.title.toLowerCase().includes(inputValue)).map(product => (
             <Link key={product.id} to={`/productDetail/${product.id}`}>
               <CardProduct  product={product} />
             </Link>

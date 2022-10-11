@@ -160,43 +160,6 @@ header{
 
 /* --------------- service section --------------------*/
 
-.filter-options-container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.filter-input{
-  background-color: #eee;
-  border: 1px solid rgb(32, 32, 32);
-  padding: 7px;
-  border: 1px solid #ccc;
-}
-
-.categories-container .select{
-  position: relative;
-}
-
-.categories-container .select ul{
-  
-  top: 25px;
-  left: 0;
-}
-
-.categories-container .select ul li{
-  padding: 5px;
-  cursor: pointer;
-    
-}
-
-.categories-container .select ul li:hover{
-  background-color: #faba42;
-  color: #eee;
-}
-
-
-
-
 
 
 .services-container{
@@ -254,7 +217,7 @@ header{
 .grid-container{
   display: grid;
   min-height: 100vh;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));    
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));    
   padding: 5rem 10%;
   gap: 3rem 0;
   margin: 0 auto;
@@ -264,8 +227,7 @@ header{
 .item-container{
   display: flex;
   justify-content: center;
-  align-items: center;
-    
+  align-items: center;    
   gap: 5rem;
   height: 100vh;
 }
@@ -277,7 +239,7 @@ header{
   flex-direction: column;
   justify-content: space-between;
   min-height: 300px;
-  width: 180px;
+  width: 200px;
   border-radius: 10px;
   padding: 10px 20px;  
   box-shadow: 5px 5px 20px rgba(0, 0, 0, .1);
@@ -285,20 +247,48 @@ header{
   overflow: hidden; 
   cursor: pointer;
   
+  
 }
 
+
+
+.product-card h4{
+  margin: 5px 0;  
+  margin-bottom: 10px;
+  color: rgb(39, 38, 38);
+  
+}
+
+
+
 .product-card:hover{
-  transform: scale(1.1);
+  transform: translateY(-15px);
 }
 
 .product-card img{
-  height: 220px;
+  height: 230px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 
 /* product details styles */
+
+
+.filter-options-container input{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding: 15px;
+  
+
+}
+
+
+
+
 
 .product-detail-container{
   

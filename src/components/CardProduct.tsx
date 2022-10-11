@@ -11,8 +11,9 @@ const CardProduct = ({ product }: Props ) => {
         <img 
             src={product.pictureURL[0]} 
             alt={product.title}
-         />
-         <h4>{product.title}</h4>
+         />       
+          
+        <h4>$ {product.price}</h4>         
     </div>
   )
 }
