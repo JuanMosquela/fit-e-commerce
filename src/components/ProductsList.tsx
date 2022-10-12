@@ -16,6 +16,7 @@ const ProductsList = () => {
 
     const [loading, setLoading] = useState<boolean>(true)    
 
+    const [category, setCategory] = useState<Product[]>([])
     
 
     useEffect (() => {
@@ -34,7 +35,7 @@ const ProductsList = () => {
       })
           
         } catch (error) {
-           console.log(error)
+          console.log(error)
           setLoading(false)
           
         } finally{
@@ -44,6 +45,16 @@ const ProductsList = () => {
       fetchProducts()     
       
     }, [])
+
+    const handleCategory = (category:string) => {
+      const arrayFilter = dataProducts.filter(product => {
+        return category!== 'all' ? product.category === category : product   
+      })
+      console.log({arrayFilter})
+      setCategory(arrayFilter)
+    }
+
+   
 
     
     
@@ -61,7 +72,14 @@ const ProductsList = () => {
           value={inputValue}
           placeholder='Search products by name'
           onChange={(e) => setInputValue(e.target.value)} 
-        />        
+        />   
+        <select onChange={(e) => handleCategory(e.target.value)}>
+          <option value={''}>Search by category</option>
+          <option value='all'>Show all</option>
+          <option value='standard'>Standard</option>
+          <option value='isolada'>Isolada</option>
+          <option value='vegetariana'>Vegetariana</option>
+        </select>     
         
     </div>
 
@@ -69,6 +87,17 @@ const ProductsList = () => {
         loading 
         ?
         <CircularProgress />
+        :
+        category.length > 0
+        ?
+        <div className='grid-container'>
+          {category.filter(product => 
+            product.title.toLowerCase().includes(inputValue)).map(product => (
+            <Link key={product.id} to={`/productDetail/${product.id}`}>
+              <CardProduct  product={product} />
+            </Link>
+        ))}
+        </div>
         :
         <div className='grid-container'>
           {dataProducts.filter(product => 

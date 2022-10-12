@@ -50,19 +50,19 @@ const ProductDetailContainer = () => {
 
 
   return (
-    <>
-    <div className='container product-detail-container'>
-        {
-            !product 
-            ? <CircularProgress sx={{ color:'var(--color-orange)' }} size='5rem'  />
-            : <ProductDetail product={product} />
-        }
+    <section>
+        <div className='product-detail-container'>
+            {
+                !product 
+                ? <CircularProgress sx={{ color:'var(--color-orange)' }} size='5rem'  />
+                : <ProductDetail product={product} />
+            }
 
-        
-        
-    </div>
-    <SlickCarrusel products={allProducts} />
-    </>
+            
+            
+        </div>
+        <SlickCarrusel products={allProducts} />
+    </section>
   )
 }
 export default ProductDetailContainer

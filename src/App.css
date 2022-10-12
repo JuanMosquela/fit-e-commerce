@@ -16,6 +16,7 @@ html{
 
 body{
   overflow-x: hidden;
+  background-color: var(--color-background);
 }
 
 
@@ -29,6 +30,7 @@ body{
   --color-pink: #bb84ee;
   --color-black: rgb(24, 23, 23);
   --color-black-light: #27282D;
+  --color-background: #EBEBEB;
 }
 
 
@@ -76,8 +78,9 @@ header{
 }
 
 .container, section{
-  padding: 3rem 10%;
+  padding: 0 10%;
   overflow-x: hidden;
+  
 }
 
 
@@ -182,6 +185,7 @@ header{
   border: transparent 5px solid;  
   border-radius: 12px;
   padding: 1.5rem 0rem;
+  background-color: #FFF;
 }
 
 
@@ -246,6 +250,7 @@ header{
   margin: 0 auto;
   overflow: hidden; 
   cursor: pointer;
+  background-color: #FFF;
   
   
 }
@@ -274,14 +279,31 @@ header{
 
 /* product details styles */
 
+.filter-options-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  
+
+  
+}
+
+.filter-options-container select{
+  flex: 1;
+  border: #ccc 1px solid;
+  padding: 12px;
+  border-radius: 5px;
+  color: rgba(51, 51, 51, 0.678);
+}
+
 
 .filter-options-container input{
   border: 1px solid #ccc;
   border-radius: 5px;
   display: block;
-  width: 80%;
+  flex: 4;  
   margin: 0 auto;
-  padding: 15px;
+  padding: 12px;
   
 
 }
@@ -297,6 +319,9 @@ header{
   align-items: center;
   min-height: 100vh;
   padding: 0 10%;
+  background-color: #FFF;
+  padding: 0 10%;
+  
   
 }
 
@@ -305,6 +330,7 @@ header{
   justify-content: center;
   flex-wrap: wrap;
   gap: 3rem;
+  
   
   
 
@@ -439,8 +465,10 @@ header{
 }
 
 .carrusel-container{
-  min-height: 70vh;
+  min-height: 60vh;
   padding: 0 10%; 
+  background-color: #FFF;
+  
   
 }
 
@@ -457,6 +485,9 @@ header{
   flex-direction: column; 
   min-height: 100vh; 
   padding-top: 5rem;
+  background-color: #FFF;
+  width: 80%;
+  margin: 0 auto;
   
 }
 
@@ -663,9 +694,7 @@ header{
 
 @media (max-width:568px){
 
-  .services-container{
-    
-  }
+  
 
 
 
@@ -722,6 +751,9 @@ header{
     width: 20px;
     right: 5px;
   }
+  .cart-container{
+    width: 100%;
+  }
   .cart-container .cart-item img{
     height: 100px;
     width: 40px;
@@ -739,6 +771,10 @@ header{
   .cart-container .cart-item span{
     font-size: 10px;
   }
+
+  .cart-summary{
+    padding: 0 1rem;
+  }
   .cart-container .cart-item .button-group{
     width: 70px;
     padding: 5px;
@@ -746,6 +782,15 @@ header{
   .cart-item .item-info button{
     font-size: 10px;
     padding: 5px;
+  }
+  .cart-item .success{
+    width: 60%;
+    
+  }
+
+  .checkout-button{
+    width: 60%;   
+    font-size: 1rem;
   }
 }
 
