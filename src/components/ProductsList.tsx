@@ -5,6 +5,7 @@ import { Product } from '../utils/interfaces'
 import CardProduct from './CardProduct'
 import { Link } from 'react-router-dom'
 import { CircularProgress } from '@mui/material'
+import {BiSearch} from 'react-icons/bi'
 import Title from './Title'
 
 
@@ -17,6 +18,8 @@ const ProductsList = () => {
     const [loading, setLoading] = useState<boolean>(true)    
 
     const [category, setCategory] = useState<Product[]>([])
+
+    const [isClicked, setIsClicked] = useState<boolean>(false)
     
 
     useEffect (() => {
@@ -66,13 +69,6 @@ const ProductsList = () => {
       <Title title='Our products' subtitle='Selling' />
 
       <div className='filter-options-container'>
-        <input
-          className="filter-input" 
-          type="text"
-          value={inputValue}
-          placeholder='Search products by name'
-          onChange={(e) => setInputValue(e.target.value)} 
-        />   
         <select onChange={(e) => handleCategory(e.target.value)}>
           <option value={''}>Search by category</option>
           <option value='all'>Show all</option>
@@ -81,7 +77,20 @@ const ProductsList = () => {
           <option value='vegetariana'>Vegetariana</option>
         </select>     
         
+        <div className="input-container">
+          <input
+            className={isClicked ? `filter-input clicked` : 'filter-input'} 
+            
+            type="text"
+            value={inputValue}
+            placeholder={isClicked ? `Search products by name` : ``}
+            onChange={(e) => setInputValue(e.target.value)} 
+            
+          /> 
+          <BiSearch className='search-icon' onClick={() => setIsClicked(true)} />  
+        </div>
     </div>
+    
 
       {
         loading 

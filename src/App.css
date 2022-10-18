@@ -11,6 +11,7 @@
 html{
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+ 
   
 }
 
@@ -28,9 +29,9 @@ body{
 :root{
   --color-orange: #faba42;
   --color-pink: #bb84ee;
-  --color-black: rgb(24, 23, 23);
+  --color-black: #34404A;
   --color-black-light: #27282D;
-  --color-background: #EBEBEB;
+  --color-background: #F9F6F4;
 }
 
 
@@ -78,7 +79,7 @@ header{
 }
 
 .container, section{
-  padding: 0 10%;
+  padding: 3rem 10%;
   overflow-x: hidden;
   
 }
@@ -280,8 +281,10 @@ header{
 /* product details styles */
 
 .filter-options-container{
+  padding: 0 10%;
   display: flex;
   justify-content: space-between;
+  
   gap: 1rem;
   
 
@@ -289,25 +292,44 @@ header{
 }
 
 .filter-options-container select{
-  flex: 1;
+ 
   border: #ccc 1px solid;
   padding: 12px;
   border-radius: 5px;
   color: rgba(51, 51, 51, 0.678);
-  width: 100%;
+  width: 200px;
+}
+
+.input-container{
+  position: relative;
+  
 }
 
 
-.filter-options-container input{
+.filter-options-container .filter-input{
+  
   border: 1px solid #ccc;
-  border-radius: 5px;
-  display: block;
-  flex: 4;  
-  margin: 0 auto;
-  padding: 12px;
-  width: 100%;
+  border-radius: 5px;  
+  visibility: hidden;
+  width: 50px;   
+  padding: 12px;  
+  border-radius: 20px;  
   
 
+}
+
+.search-icon{
+  position: absolute;
+  top: 25%;
+  right: 20px;
+  cursor: pointer;  
+  font-size: 1.4rem;
+}
+
+.filter-options-container .filter-input.clicked{
+  width: 600px;
+  background-color: #FFF;
+  visibility: visible;
 }
 
 

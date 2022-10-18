@@ -29,8 +29,8 @@ const Home = () => {
 
     </section >
 
-    <ProductsList />
     <Services />
+    <ProductsList />
     
     </>
   )
