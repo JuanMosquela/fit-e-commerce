@@ -8,8 +8,10 @@ import Home from './pages/Home';
 import ProductDetailContainer from './pages/ProductDetailContainer';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-import UserProvider from './context/UserProvider';
+
 import SuccessPage from './pages/SuccessPage';
+
+
 
 
 
@@ -19,19 +21,20 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Provider store={store}>
-      <UserProvider>
+      
       <Routes>
         
         <Route path='/' element={<App />}>
           <Route index element={<Home />} />          
-          <Route path='/contact' element={<Contact />} />         
+          <Route path='/contact' element={<Contact />} />  
+                
           <Route path='/cartlist' element={<CartList />} />
           <Route path='/productDetail/:id' element={<ProductDetailContainer />} />   
           <Route path='/success' element={<SuccessPage />} />         
         </Route>
       </Routes>
 
-      </UserProvider>
+      
     </Provider>    
   </BrowserRouter>
 );

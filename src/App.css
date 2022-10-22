@@ -17,7 +17,7 @@ html{
 
 body{
   overflow-x: hidden;
-  background-color: var(--color-background);
+  background-color: #FFF;
 }
 
 
@@ -32,6 +32,7 @@ body{
   --color-black: #34404A;
   --color-black-light: #27282D;
   --color-background: #F9F6F4;
+  --border: rgb(219, 219, 219);
 }
 
 
@@ -136,6 +137,51 @@ header{
   right: -15px;
 }
 
+.fav-container{
+  color: #FFF;
+  transform: scale(1.8);
+  position: relative;
+  
+  height: 100%;
+}
+
+.fav-products-wrapper{
+  position: absolute;
+  top: 70px;
+  right: 70px;
+  height: 400px;
+  width: 350px;
+  background-color: #FFF;
+  overflow-y: scroll;
+}
+
+.fav-products-wrapper .title{
+  font-size: 1rem;  
+   font-weight: 500;   
+   border-bottom: 1px solid #333;
+   margin-bottom: 1rem;
+}
+
+.fav-product{
+  display: flex;
+  gap: 1rem;  
+  padding:0 1rem ;
+  margin-bottom: 1rem;
+  
+}
+
+.fav-product img{
+  width: 50px; 
+
+}
+
+.fav-product h4{
+  margin-bottom: 10px;
+}
+
+
+
+
 .hero{
   min-height: 70vh;
   
@@ -220,11 +266,13 @@ header{
 
 
 .grid-container{
-  display: grid;
+  display: flex;
   min-height: 100vh;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));    
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;    
   padding: 5rem 10%;
-  gap: 3rem 0;
+  gap: 3rem;
   margin: 0 auto;
   
 }
@@ -241,27 +289,50 @@ header{
 
 .product-card {
   display: flex;
+  position: relative;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 300px;
-  width: 200px;
+  justify-content: space-between;  
+  height: 360px;  
+  width: 220px;
   border-radius: 10px;
-  padding: 10px 20px;  
-  box-shadow: 1px 1px 25px rgba(0, 0, 0, .1);
+  padding: 10px 0px;  
+  border: var(--border) 1px solid;
   margin: 0 auto;
-  overflow: hidden; 
+  
   cursor: pointer;
   background-color: #FFF;
   
   
 }
 
+.product-card .hearts{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+}
+
+.product-card .product-content{
+  padding: 10px 15px;
+}
+
+.product-card span{
+  color: rgb(163, 163, 163);
+  font-size: .9rem;
+  text-transform: capitalize;
+  margin: 15px 0 5px;
+}
+
+.product-card h4, h5{
+  color: rgb(39, 38, 38);
+  margin-bottom: 10px;
+}
 
 
 .product-card h4{
-  margin: 5px 0;  
-  margin-bottom: 10px;
-  color: rgb(39, 38, 38);
+  margin-bottom: 20px;
+    
+  
   
 }
 
@@ -275,6 +346,24 @@ header{
   height: 230px;
   width: 100%;
   object-fit: contain;
+}
+
+
+
+.heart-icon{
+  
+  border: 1px solid #eee;
+  height: 35px;
+  width: 35px;
+  padding: 5px;
+  border-radius: 99%;
+   
+}
+.heart-icon.empty{
+  color: #ccc;
+}
+.heart-icon.full{
+  color: var(--color-orange);
 }
 
 
@@ -308,22 +397,25 @@ header{
 
 .filter-options-container .filter-input{
   
-  border: 1px solid #ccc;
-  border-radius: 5px;  
+  border: 1px solid #ccc;    
   visibility: hidden;
-  width: 50px;   
+  height: 45px;    
   padding: 12px;  
-  border-radius: 20px;  
+ 
   
 
 }
 
 .search-icon{
   position: absolute;
-  top: 25%;
-  right: 20px;
+  top: 0%;
+  right: 0px;
   cursor: pointer;  
-  font-size: 1.4rem;
+  font-size: 1rem;
+  padding: 10px;
+  height: 100%;
+  width: 50px;
+  border: 1px solid #ccc;
 }
 
 .filter-options-container .filter-input.clicked{
@@ -835,7 +927,7 @@ header{
 
 .success-content{
   min-height: 50vh;
-  width: 70%;
+  width: 500px;
   margin: 0 auto;
   border-radius: 12px;
   display: flex;
@@ -849,6 +941,8 @@ header{
 .success-content h1{
   color: #1d354d;
 }
+
+
 
 .success-icon{    
   font-size: 5rem;

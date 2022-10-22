@@ -35,7 +35,7 @@ const SuccessPage = () => {
               sx={{ 
                                                                               
                   backgroundColor:'#333',
-                  fontSize:'1.4rem',
+                  fontSize:'1rem',
                   '&:hover': {
                         background: "#faba42",
                   },

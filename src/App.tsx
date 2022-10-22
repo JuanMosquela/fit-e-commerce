@@ -1,17 +1,17 @@
 
 import './App.css'
 import Navbar from './components/Navbar';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
-import { useContext, useEffect } from 'react';
-import { UserContext } from './context/UserProvider';
+import { useEffect } from 'react';
+
 
 
 function App() {
 
-   const {user} = useContext(UserContext)
+  
 
-    const navigate = useNavigate()
+    
 
     const { pathname } = useLocation();
 
