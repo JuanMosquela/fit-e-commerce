@@ -11,17 +11,20 @@ const Title = ({ title, subtitle }: TitleProps) => {
   return (
     <Box sx={{
         display:'flex',
-        justifyContent:'center',
+        
         flexDirection:'column',
-        alignItems:'center',
+        
         marginBottom:'4rem',
-        textAlign:'center'   
+          
         
     }}>
         <Typography variant="h5" component='h3' >
             {subtitle}
         </Typography>
-        <Typography variant="h3" component='h3' sx={{ fontWeight:'600'}} >
+        <Typography variant="h3" component='h3' sx={{ 
+          fontWeight:'600',
+          fontSize:'2.4rem'
+        }} >
           {title}
         </Typography>
     </Box>

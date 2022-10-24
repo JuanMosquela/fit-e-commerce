@@ -17,7 +17,7 @@ html{
 
 body{
   overflow-x: hidden;
-  background-color: #FFF;
+  background-color: #eee;
 }
 
 
@@ -80,7 +80,7 @@ header{
 }
 
 .container, section{
-  padding: 3rem 10%;
+  padding: 3rem 15%;
   overflow-x: hidden;
   
 }
@@ -187,7 +187,7 @@ header{
 
 
 .hero{
-  min-height: 70vh;
+  min-height: 80vh;
   
   background: url(./img/slide.jpg) no-repeat center;
   background-size: cover;
@@ -273,11 +273,10 @@ header{
   display: flex;
   min-height: 100vh;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;    
-  padding: 5rem 10%;
+  justify-content: center;    
+  padding: 5rem 0;
   gap: 3rem;
-  margin: 0 auto;
+  
   
 }
 
@@ -296,16 +295,15 @@ header{
   position: relative;
   flex-direction: column;
   justify-content: space-between;  
-  height: 360px;  
+  height: fit-content;  
   width: 220px;
+  height: 360px;
   border-radius: 10px;
   padding: 10px 0px;  
   border: var(--border) 1px solid;
-  margin: 0 auto;
-  
+  margin: 0 auto;  
   cursor: pointer;
-  background-color: #FFF;
-  
+  background-color: #FFF;  
   
 }
 
@@ -327,24 +325,29 @@ header{
   margin: 15px 0 5px;
 }
 
+
+
 .product-card h4, h5{
   color: rgb(39, 38, 38);
-  margin-bottom: 10px;
+  
+  
 }
 
 
 .product-card h4{
-  margin-bottom: 20px;
-    
-  
+   font-size: .8rem;
+  margin-bottom: 15px; 
   
 }
-
-
 
 .product-card:hover{
-  transform: translateY(-15px);
+  transform: scale(1.02);
+  box-shadow: 1px 5px 25px rgba(0, 0, 0, .2);
 }
+
+
+
+
 
 .product-card img{
   height: 230px;
@@ -374,37 +377,37 @@ header{
 /* product details styles */
 
 .filter-options-container{
-  padding: 0 10%;
+  
   display: flex;
   justify-content: space-between;
-  
-  gap: 1rem;
+  gap: 5rem;
   
 
   
 }
 
-.filter-options-container select{
- 
+.filter-options-container select{ 
   border: #ccc 1px solid;
   padding: 12px;
   border-radius: 5px;
   color: rgba(51, 51, 51, 0.678);
   width: 200px;
+  flex: 1;
 }
 
 .input-container{
   position: relative;
-  
+  flex: 2;  
 }
 
 
-.filter-options-container .filter-input{
+.filter-options-container .filter-input{  
+  border: 1px solid #ccc; 
+  width: 100%;   
   
-  border: 1px solid #ccc;    
-  visibility: hidden;
   height: 45px;    
-  padding: 12px;  
+  padding: 12px; 
+   
  
   
 
@@ -426,6 +429,27 @@ header{
   width: 600px;
   background-color: #FFF;
   visibility: visible;
+}
+
+.load-button{
+  width: 150px;
+  background-color: var(--color-orange);
+  color: #FFF;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 7px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.icon-load{
+  transform: scale(1.4);
+}
+.load-button:hover{
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, .2);
 }
 
 
@@ -465,9 +489,13 @@ header{
 }
 
 .product-info h4{
-  color: var(--color-orange);
+  display: inline-block;
+  padding:5px 10px;
+  color: #FFF;
+  background-color: var(--color-orange);
   font-weight: 600;
   text-transform: uppercase;
+  border-radius: 7px;
   margin-bottom: .8rem;
 }
 

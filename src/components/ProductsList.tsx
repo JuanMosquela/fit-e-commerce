@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import { CircularProgress } from '@mui/material'
 import {BiSearch} from 'react-icons/bi'
 import Title from './Title'
+import { AiOutlineReload } from 'react-icons/ai'
+
 
 
 const ProductsList = () => {
@@ -19,7 +21,9 @@ const ProductsList = () => {
 
     const [category, setCategory] = useState<Product[]>([])
 
-    const [isClicked, setIsClicked] = useState<boolean>(false)
+    const [allCategories, setAllCategories] = useState<string[]>([])    
+
+    const [productsPerPage, setProductsPerPage] = useState(10)    
     
 
     useEffect (() => {
@@ -31,13 +35,12 @@ const ProductsList = () => {
             const list : any = res.docs.map(product => ({
                 ...product.data(),
                 id: product.id
-            }))
+            }))        
           
           setDataProducts(list)
-          setLoading(false)        
-      })
+          setLoading(false)
           
-        } catch (error) {
+      })} catch (error) {
           console.log(error)
           setLoading(false)
           
@@ -45,9 +48,11 @@ const ProductsList = () => {
           setLoading(false)
         }
        }
-      fetchProducts()     
+      fetchProducts() 
       
-    }, [])
+      
+      
+  }, [])
 
     const handleCategory = (category:string) => {
       const arrayFilter = dataProducts.filter(product => {
@@ -57,9 +62,24 @@ const ProductsList = () => {
       setCategory(arrayFilter)
     }
 
-   
+    console.log(allCategories)
 
     
+    
+
+    
+
+    
+
+
+    // Get current page
+
+     const loadMore = () => setProductsPerPage(prev => prev + 10)
+
+  
+  
+  
+ 
     
 
 
@@ -69,26 +89,30 @@ const ProductsList = () => {
       <Title title='Our products' subtitle='Selling' />
 
       <div className='filter-options-container'>
-        <select onChange={(e) => handleCategory(e.target.value)}>
-          <option value={''}>Search by category</option>
-          <option value='all'>Show all</option>
-          <option value='standard'>Standard</option>
-          <option value='isolada'>Isolada</option>
-          <option value='vegetariana'>Vegetariana</option>
-        </select>     
-        
-        <div className="input-container">
+
+      <div className="input-container">
           <input
-            className={isClicked ? `filter-input clicked` : 'filter-input'} 
-            
+            className='filter-input'            
             type="text"
             value={inputValue}
-            placeholder={isClicked ? `Search products by name` : ``}
+            placeholder='Search products by name'
             onChange={(e) => setInputValue(e.target.value)} 
             
           /> 
-          <BiSearch className='search-icon' onClick={() => setIsClicked(true)} />  
+          <BiSearch className='search-icon'  />  
         </div>
+
+
+        <select onChange={(e) => handleCategory(e.target.value)}>
+          <option disabled value={''}>Search by category</option>
+          <option value="all">All</option>
+          <option value="suplementos">Suplementos</option>
+          <option value="barras">Barras</option>
+          <option value="accesorios">Accesorios</option>    
+          
+        </select>     
+        
+       
     </div>
     
 
@@ -109,14 +133,24 @@ const ProductsList = () => {
         </div>
         :
         <div className='grid-container'>
-          {dataProducts.filter(product => 
+          {dataProducts.slice(1, productsPerPage).filter(product => 
             product.title.toLowerCase().includes(inputValue)).map(product => (
             <Link key={product.id} to={`/productDetail/${product.id}`}>
               <CardProduct  product={product} />
             </Link>
         ))}
         </div>
-      }        
+
+
+        
+      }   
+    <button 
+      className='load-button'
+      onClick={() => loadMore()}>
+        Load more
+        <AiOutlineReload className='icon-load' />
+    </button>
+         
 
     </section>
   )

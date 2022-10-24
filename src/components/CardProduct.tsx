@@ -23,8 +23,8 @@ const CardProduct = ({ product }: Props ) => {
         />
         <Heart product={product} />
         <div className="product-content">
-          <span>{product.category}</span>
-          <h4>{product.title}</h4>          
+          
+          <h4>{product.title.toLowerCase()}</h4>          
           <h5>$ {product.price}</h5>  
         </div>       
     </div>

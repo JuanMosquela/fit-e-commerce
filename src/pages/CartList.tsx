@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-
 import EmpyCart from "../components/EmpyCart";
 import { Product } from "../utils/interfaces";
 import {removeItem,
@@ -12,10 +11,7 @@ import {removeItem,
 import { Link } from "react-router-dom";
 
 
-
-const CartList = () => {
-
-  
+const CartList = () => {  
 
   const { cart, totalPrice } = useSelector(useCartSelector) 
   
@@ -28,21 +24,14 @@ const CartList = () => {
 
   const handleRemove = (product : Product) => {
     dispatch(removeItem(product))
-    
-
   }
 
    const handleDecrese = (product : Product) => {
     dispatch(decrese(product))
-    
-
   }
   const handleIncrece = (product: Product) => {
     dispatch(increse(product))
-  }
-
- 
-  
+  }  
 
 
   return (
@@ -74,9 +63,8 @@ const CartList = () => {
                 <span onClick={() => handleDecrese(product)}>-</span>
                 <span>{product.amount}</span>
                 <span onClick={() => handleIncrece(product)}>+</span>
-              </div>
-              
-              <span>$ {product.price*product.amount}</span>         
+              </div>              
+              <span>$ {(product.price*product.amount).toFixed(3)}</span>         
               
             </div>
           ))} 
@@ -85,7 +73,7 @@ const CartList = () => {
             <div className="cart-checkout"> 
               <div className="checkout-info">
                 <h3>Subtotal:</h3>
-                <span>$ {totalPrice}</span>
+                <span>$ {(totalPrice).toFixed(3)}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
              
@@ -94,14 +82,11 @@ const CartList = () => {
                   Check out           
                 
                 </button>
-              </Link>
-                
-                
-              
+              </Link>             
             </div>
           </div>  
         </> 
-      } 
+      }
       
     </section>
   )
