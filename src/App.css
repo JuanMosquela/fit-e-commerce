@@ -17,6 +17,7 @@ html{
 
 body{
   overflow-x: hidden;
+  background-color: rgba(238, 238, 238, 0.4);
   
 }
 
@@ -253,13 +254,15 @@ header{
 .filter-options-container{  
   display: flex;
   justify-content: center;
+  height: fit-content;
   gap: 5rem;
   flex: 1;  
 }
 .aside-filter{
   padding: 1rem;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column; 
+   
   
 }
 
