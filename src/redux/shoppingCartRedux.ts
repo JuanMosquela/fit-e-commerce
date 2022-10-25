@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../utils/interfaces";
 import { RootState } from "./store";
+import { toast } from 'react-toastify'
 
 interface CartState {
     cart: Product[],
@@ -24,7 +25,11 @@ export const shoppingCartSlice = createSlice({
 
         addToFav: (state: CartState, action: PayloadAction<Product>) => {
             state.favProducts = [...state.favProducts, action.payload] 
-            localStorage.setItem('favProducts', JSON.stringify(state.favProducts))       
+            localStorage.setItem('favProducts', JSON.stringify(state.favProducts)) 
+            toast.success(`added ${action.payload.title} to favorites`, {
+                position:'top-right' ,
+                                   
+            })      
 
         },
         removeFromFav: (state: CartState, action: PayloadAction<Product>) => {
@@ -54,10 +59,18 @@ export const shoppingCartSlice = createSlice({
                     ...state.cart[existingIndex],
                     amount: counter ? state.cart[existingIndex].amount + counter : state.cart[existingIndex].amount + 1
                 };
+                toast.info('incresed product quantity', {
+                    position:'top-right',
+                                        
+                })
 
             } else {
                 let tempProductItem = { ...action.payload.product, amount: counter ? counter : 1 };
                 state.cart.push(tempProductItem);
+                toast.success(`added ${action.payload.title} to cart`, {
+                    position:'top-right' ,
+                                       
+                })
 
             }
             localStorage.setItem("cart", JSON.stringify(state.cart));

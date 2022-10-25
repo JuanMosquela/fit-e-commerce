@@ -8,7 +8,8 @@ import Home from './pages/Home';
 import ProductDetailContainer from './pages/ProductDetailContainer';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import SuccessPage from './pages/SuccessPage';
 
 
@@ -21,6 +22,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Provider store={store}>
+      <ToastContainer />
       
       <Routes>
         
