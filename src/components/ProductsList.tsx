@@ -18,7 +18,7 @@ interface Props {
 
 
 
-const categories = ['all', 'mancuernas', 'suplementos', 'accesorios']
+const categories = ['all', 'mancuernas', 'suplementos', 'accesorios', 'maquinas','zapatillas']
 
 
 const ProductsList = ({ inputValue } : Props) => {
@@ -34,7 +34,7 @@ const ProductsList = ({ inputValue } : Props) => {
     const [currentPage, setCurrentPage] = useState(1);
      
 
-    const [productsPerPage, setProductsPerPage] = useState(8)    
+    const [productsPerPage, setProductsPerPage] = useState(10)    
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
 

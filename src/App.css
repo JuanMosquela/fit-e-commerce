@@ -249,6 +249,7 @@ header{
 
 .container-products{
   padding: 0;
+  min-height: 100vh;
   
 }
 
@@ -277,11 +278,17 @@ header{
   justify-content: center;
   height: fit-content;
   gap: 5rem;
-  width: 400px;
+  
+  background-color: #34404A;
   
 }
 .aside-filter{
+  display: block;
   padding: 1rem;
+  width: 100%;
+  width: 400px;
+  
+  
   
   
 }
