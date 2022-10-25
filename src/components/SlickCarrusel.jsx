@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick"
 import CardProduct from "./CardProduct";
 import { Link } from "react-router-dom";
-import Title from "./Title";
+
 
 const SlickCarrusel = ({ products }) => {
   
@@ -49,7 +49,7 @@ const SlickCarrusel = ({ products }) => {
    
     return (
       <div className="carrusel-container">
-        <Title title="Our recomended products for you" />
+       
         <Slider {...settings}>
           {
             products.map(product => (

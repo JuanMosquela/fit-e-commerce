@@ -5,17 +5,27 @@ import { Product } from '../utils/interfaces'
 import CardProduct from './CardProduct'
 import { Link } from 'react-router-dom'
 import { CircularProgress } from '@mui/material'
-import {BiSearch} from 'react-icons/bi'
-import Title from './Title'
+
+
 import { AiOutlineReload } from 'react-icons/ai'
+import { IoIosArrowDown, IoIosArrowUp, IoIosFitness, IoIosOptions } from 'react-icons/io'
+import { FaHeartbeat } from 'react-icons/fa'
+
+interface Props {
+  inputValue: string
+}
 
 
 
-const ProductsList = () => {
+const categories = ['mancuernas', 'suplementos', 'accesorios']
+
+
+
+const ProductsList = ({ inputValue } : Props) => {
 
     const [dataProducts, setDataProducts] = useState<Product[]>([])
 
-    const [inputValue, setInputValue] = useState<string>('')
+   
 
     const [loading, setLoading] = useState<boolean>(true)    
 
@@ -23,7 +33,9 @@ const ProductsList = () => {
 
     const [allCategories, setAllCategories] = useState<string[]>([])    
 
-    const [productsPerPage, setProductsPerPage] = useState(10)    
+    const [productsPerPage, setProductsPerPage] = useState(12)    
+
+    const [isOpen, setIsOpen] = useState<boolean>(false)
     
 
     useEffect (() => {
@@ -54,66 +66,68 @@ const ProductsList = () => {
       
   }, [])
 
-    const handleCategory = (category:string) => {
+    const handleCategory = ( category:string) => {
+      
       const arrayFilter = dataProducts.filter(product => {
         return category!== 'all' ? product.category === category : product   
       })
       console.log({arrayFilter})
       setCategory(arrayFilter)
-    }
-
-    console.log(allCategories)
-
-    
-    
-
-    
-
-    
+    } 
 
 
     // Get current page
 
-     const loadMore = () => setProductsPerPage(prev => prev + 10)
-
-  
-  
-  
- 
-    
+    const loadMore = () => setProductsPerPage(prev => prev + 10)    
 
 
   return (
-    <section className='container-products'>
+    <section className='container-products'>     
 
-      <Title title='Our products' subtitle='Selling' />
+      <aside className='filter-options-container'>
+        <nav className="aside-wrapper">          
+            <div              
+              className="aside-filter">
+              <div className='filter-title'>
+                <IoIosOptions />
+                <span>Filtros</span>
+              </div>
 
-      <div className='filter-options-container'>
+              <div 
+                style={{ display:'flex', flexDirection:'column' }}
+                >
+                <div className="filter-option">
+                Categorias
+                { isOpen ? 
+                  <IoIosArrowUp onClick={() => setIsOpen(prev => !prev)}  />
+                  :
+                  <IoIosArrowDown onClick={() => setIsOpen(prev => !prev)} />  }
+                </div>
+                <div>
+                  {
+                    isOpen && (
+                      categories.map(category => (
+                        <div className='option-group'>
+                          <input onChange={() => handleCategory(category)} type="checkbox" name={category}  />
+                          <label htmlFor={category}>{category}</label>
+                        </div>
 
-      <div className="input-container">
-          <input
-            className='filter-input'            
-            type="text"
-            value={inputValue}
-            placeholder='Search products by name'
-            onChange={(e) => setInputValue(e.target.value)} 
-            
-          /> 
-          <BiSearch className='search-icon'  />  
-        </div>
+                      ))
 
+                    )
+                  }
+                </div>
 
-        <select onChange={(e) => handleCategory(e.target.value)}>
-          <option disabled value={''}>Search by category</option>
-          <option value="all">All</option>
-          <option value="suplementos">Suplementos</option>
-          <option value="barras">Barras</option>
-          <option value="accesorios">Accesorios</option>    
-          
-        </select>     
-        
-       
-    </div>
+              </div>
+
+              
+              
+              
+            </div>
+
+         
+        </nav>
+      </aside>
     
 
       {
@@ -133,7 +147,7 @@ const ProductsList = () => {
         </div>
         :
         <div className='grid-container'>
-          {dataProducts.slice(1, productsPerPage).filter(product => 
+          {dataProducts.slice(0, productsPerPage).filter(product => 
             product.title.toLowerCase().includes(inputValue)).map(product => (
             <Link key={product.id} to={`/productDetail/${product.id}`}>
               <CardProduct  product={product} />
@@ -144,12 +158,12 @@ const ProductsList = () => {
 
         
       }   
-    <button 
+    {/* <button 
       className='load-button'
       onClick={() => loadMore()}>
         Load more
         <AiOutlineReload className='icon-load' />
-    </button>
+    </button> */}
          
 
     </section>

@@ -1,7 +1,6 @@
-
-
 import { Product } from "../utils/interfaces"
 import Heart from "./Heart"
+import { useState } from 'react'
 
 
 interface Props {
@@ -12,13 +11,22 @@ interface Props {
 
 const CardProduct = ({ product }: Props ) => {
 
+  const [isHovered, setIsHovered] = useState<boolean>(false)
+
   
 
 
   return (
-    <div className="product-card">
+    <div 
+      className={isHovered ? 'product-card hovered' : 'product-card'}
+      onMouseEnter={() => setIsHovered(prev => !prev)}
+      onMouseLeave={() => setIsHovered(prev => !prev)}>
         <img 
             src={product.pictureURL[0]} 
+            alt={product.title}
+        />
+        <img 
+            src={product.pictureURL[1]} 
             alt={product.title}
         />
         <Heart product={product} />

@@ -1,4 +1,4 @@
-import Title from "./Title";
+
 import {IoIosFitness} from 'react-icons/io'
 import {MdDirectionsBike} from 'react-icons/md'
 import {FaSolarPanel} from 'react-icons/fa'
@@ -25,7 +25,7 @@ const Services = () => {
   return (
     <section>
         <div className="services-container">
-            <Title title='Our awesome services' subtitle='Offering' />
+            
             <div className="services-wrapper">
                 {services.map(service => (
                     <div key={service.title} className="service-item">

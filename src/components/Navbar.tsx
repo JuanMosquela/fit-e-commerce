@@ -6,6 +6,7 @@ import { useState } from 'react'
 
 import { removeFromFav, useCartSelector } from '../redux/shoppingCartRedux'
 import { useDispatch, useSelector } from 'react-redux'
+import { IoIosArrowDown } from 'react-icons/io'
 
 
 
@@ -27,23 +28,24 @@ const Navbar = () => {
             <Box sx={{
               display:'flex',
               gap:3,
-              justifyContent:'space-between',
-              height:'100%',
-              alignItems:'center'
+              justifyContent:'space-between',              
+              alignItems:'center',
+              height:'100%'
             }}>
             
-            <AiOutlineHeart 
-              className='fav-container'
-              
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)} 
-               />
+            <div 
+              className='fav-container'              
+              onClick={() => setIsHovered(prev => !prev)} 
+              >
+                Favorites
+                <IoIosArrowDown />
+
+            </div>
             {
               isHovered && 
               <div 
                 className="fav-products-wrapper" 
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)} >
+                >
                   <h4 className='title'>Favorites</h4>
         {
 
