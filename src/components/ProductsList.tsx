@@ -10,6 +10,7 @@ import { CircularProgress } from '@mui/material'
 import { AiOutlineReload } from 'react-icons/ai'
 import { IoIosArrowDown, IoIosArrowUp, IoIosFitness, IoIosOptions } from 'react-icons/io'
 import { FaHeartbeat } from 'react-icons/fa'
+import Pagination from './Pagination'
 
 interface Props {
   inputValue: string
@@ -17,25 +18,29 @@ interface Props {
 
 
 
-const categories = ['mancuernas', 'suplementos', 'accesorios']
-
+const categories = ['all', 'mancuernas', 'suplementos', 'accesorios']
 
 
 const ProductsList = ({ inputValue } : Props) => {
 
-    const [dataProducts, setDataProducts] = useState<Product[]>([])
-
-   
+    const [dataProducts, setDataProducts] = useState<Product[]>([])   
 
     const [loading, setLoading] = useState<boolean>(true)    
 
     const [category, setCategory] = useState<Product[]>([])
 
-    const [allCategories, setAllCategories] = useState<string[]>([])    
+    const [allCategories, setAllCategories] = useState<string[]>([]) 
 
-    const [productsPerPage, setProductsPerPage] = useState(12)    
+    const [currentPage, setCurrentPage] = useState(1);
+     
+
+    const [productsPerPage, setProductsPerPage] = useState(8)    
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
+
+    const [isClicked, setIsClicked] = useState<boolean>(false)
+
+    console.log(currentPage)
     
 
     useEffect (() => {
@@ -60,30 +65,28 @@ const ProductsList = ({ inputValue } : Props) => {
           setLoading(false)
         }
        }
-      fetchProducts() 
-      
-      
-      
+      fetchProducts()      
   }, [])
 
+  const lastPostIndex = currentPage * productsPerPage;
+  const firstPostIndex = lastPostIndex - productsPerPage;
+  const currentPosts = dataProducts.slice(firstPostIndex, lastPostIndex);
+  
+
     const handleCategory = ( category:string) => {
-      
+      setIsClicked(prev => !prev)       
       const arrayFilter = dataProducts.filter(product => {
         return category!== 'all' ? product.category === category : product   
       })
       console.log({arrayFilter})
       setCategory(arrayFilter)
-    } 
+    }    
 
-
-    // Get current page
-
-    const loadMore = () => setProductsPerPage(prev => prev + 10)    
+      
 
 
   return (
-    <section className='container-products'>     
-
+    <section className='container-products'> 
       <aside className='filter-options-container'>
         <nav className="aside-wrapper">          
             <div              
@@ -92,7 +95,6 @@ const ProductsList = ({ inputValue } : Props) => {
                 <IoIosOptions />
                 <span>Filtros</span>
               </div>
-
               <div 
                 style={{ display:'flex', flexDirection:'column' }}
                 >
@@ -111,32 +113,26 @@ const ProductsList = ({ inputValue } : Props) => {
                           <input onChange={() => handleCategory(category)} type="checkbox" name={category}  />
                           <label htmlFor={category}>{category}</label>
                         </div>
-
                       ))
-
                     )
                   }
                 </div>
-
-              </div>
-
-              
-              
-              
-            </div>
-
-         
+              </div>              
+            </div>         
         </nav>
-      </aside>
-    
+      </aside>  
 
-      {
-        loading 
-        ?
-        <CircularProgress />
-        :
-        category.length > 0
-        ?
+      <div>
+      <Pagination
+        totalPosts={dataProducts.length}
+        productsPerPage={productsPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />  
+
+      {        
+        category.length > 0 && isClicked ?
+
         <div className='grid-container'>
           {category.filter(product => 
             product.title.toLowerCase().includes(inputValue)).map(product => (
@@ -144,10 +140,10 @@ const ProductsList = ({ inputValue } : Props) => {
               <CardProduct  product={product} />
             </Link>
         ))}
-        </div>
+        </div> 
         :
         <div className='grid-container'>
-          {dataProducts.slice(0, productsPerPage).filter(product => 
+          {dataProducts.slice(firstPostIndex, lastPostIndex).filter(product => 
             product.title.toLowerCase().includes(inputValue)).map(product => (
             <Link key={product.id} to={`/productDetail/${product.id}`}>
               <CardProduct  product={product} />
@@ -158,12 +154,12 @@ const ProductsList = ({ inputValue } : Props) => {
 
         
       }   
-    {/* <button 
-      className='load-button'
-      onClick={() => loadMore()}>
-        Load more
-        <AiOutlineReload className='icon-load' />
-    </button> */}
+      </div>
+
+
+       
+    
+    
          
 
     </section>

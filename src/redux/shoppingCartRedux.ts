@@ -26,8 +26,9 @@ export const shoppingCartSlice = createSlice({
         addToFav: (state: CartState, action: PayloadAction<Product>) => {
             state.favProducts = [...state.favProducts, action.payload] 
             localStorage.setItem('favProducts', JSON.stringify(state.favProducts)) 
+            
             toast.success(`added ${action.payload.title} to favorites`, {
-                position:'top-right' ,
+                position:'bottom-right' ,
                                    
             })      
 
@@ -46,6 +47,7 @@ export const shoppingCartSlice = createSlice({
         },
 
         addToCart: (state: CartState, action: PayloadAction<any>) => {
+            
 
             let counter = action.payload.counter
 
@@ -60,15 +62,15 @@ export const shoppingCartSlice = createSlice({
                     amount: counter ? state.cart[existingIndex].amount + counter : state.cart[existingIndex].amount + 1
                 };
                 toast.info('incresed product quantity', {
-                    position:'top-right',
+                    position:'bottom-right',
                                         
                 })
 
             } else {
                 let tempProductItem = { ...action.payload.product, amount: counter ? counter : 1 };
                 state.cart.push(tempProductItem);
-                toast.success(`added ${action.payload.title} to cart`, {
-                    position:'top-right' ,
+                toast.success(`added ${action.payload.product.title} to cart`, {
+                    position:'bottom-right' ,
                                        
                 })
 
