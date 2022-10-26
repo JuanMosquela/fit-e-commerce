@@ -11,11 +11,11 @@ const SlickCarrusel = ({ products }) => {
     dots: false,
     initialSlide:0,
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
     pauseOnHover: true,
     
     responsive: [
@@ -49,6 +49,7 @@ const SlickCarrusel = ({ products }) => {
    
     return (
       <div className="carrusel-container">
+        <h3>Productos recomendados</h3>
        
         <Slider {...settings}>
           {

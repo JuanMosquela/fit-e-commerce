@@ -86,10 +86,9 @@ const ProductsList = ({ inputValue } : Props) => {
 
 
   return (
-    <section className='container-products'> 
-      <aside className='filter-options-container'>
+    <section className='container-products'>      
         <nav className="aside-wrapper">          
-            <div              
+            <ul              
               className="aside-filter">
               <div className='filter-title'>
                 <IoIosOptions />
@@ -118,9 +117,9 @@ const ProductsList = ({ inputValue } : Props) => {
                   }
                 </div>
               </div>              
-            </div>         
+            </ul>         
         </nav>
-      </aside>  
+       
 
       <div>
       <Pagination
